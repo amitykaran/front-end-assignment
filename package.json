@@ -1,0 +1,19 @@
+{
+  "name": "front-end-assignment",
+  "version": "1.0.0",
+  "description": "This is a quiz generation app.",
+  "main": "test.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/amitykaran/front-end-assignment.git"
+  },
+  "author": "amit yadav",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/amitykaran/front-end-assignment/issues"
+  },
+  "homepage": "https://github.com/amitykaran/front-end-assignment#readme"
+}
