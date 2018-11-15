@@ -1,9 +1,213 @@
 <div class="row">
-  <div class="col-md-12">
-    <form>
-      <mat-form-field>
-        <input mat-input formControlName="code" placeholder="Code">
-      </mat-form-field>
+  <div class="col-md-1"></div>
+  <div class="col-md-10 mat-card">
+    <div class="row">
+      <div class="col-md-1"></div>
+      <div class="col-md-10">
+        <p class="ctr"><strong>Front-End Assignment</strong></p>
+      </div>
+    </div>
+    <form [formGroup]="myform" class="margin-class">
+      <div class="row"> 
+        <div class="col-md-6">
+            <mat-form-field class="full-width">
+                <input matInput formControlName="code" placeholder="Code">
+                <mat-error *ngIf="myform.controls?.code?.errors?.required">Please enter this value as it is
+                  <strong>required.</strong>
+                </mat-error>
+              </mat-form-field>
+        </div>
+        <div class="col-md-6">
+            <mat-form-field class="full-width">
+                <input matInput formControlName="title" placeholder="Title">
+                <mat-error *ngIf="myform.controls?.title?.errors?.required">Please enter this value as it is
+                  <strong>required.</strong>
+                </mat-error>
+              </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12"><p><strong>Slides</strong></p></div>
+      </div>
+      <form formGroupName="slides">
+          <div class="row">
+              <div class="col-md-6">
+                  <mat-form-field class="full-width">
+                      <textarea matInput formControlName="questiontext" placeholder="Question Text"></textarea>
+                      <mat-error *ngIf="myform.controls?.questiontext?.errors?.required">Please enter this value as it is
+                        <strong>required.</strong>
+                      </mat-error>
+                  </mat-form-field>
+              </div>
+              <div class="col-md-3">
+                <p>Is Skipping Allowed</p>
+              </div>
+              <div class="col-md-3">
+                  <mat-radio-group matInput formControlName="isSkippingAllowed" placeholder="Is Skipping Allowed" >
+                      <mat-radio-button value=true>True</mat-radio-button>
+                      <mat-radio-button value=false [checked]=true>False</mat-radio-button>
+                  </mat-radio-group>  
+              </div>
+            </div>
+            <br>
+            <div class="row">
+              <div class="col-md-3">
+                <p>Auto Skipping Allowed</p>
+              </div>
+              <div class="col-md-3">
+                  <mat-radio-group matInput formControlName="isAutoSkipped" placeholder="Auto Skipping Allowed" >
+                      <mat-radio-button value=true>True</mat-radio-button>
+                      <mat-radio-button value=false [checked]=true>False</mat-radio-button>
+                  </mat-radio-group>  
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12"><p><strong>Elements</strong></p></div>
+            </div>
+            <form formGroupName="elements">
+              <div class="row">
+                <div class="col-md-3">
+                  <p>Is Required</p>
+                </div>
+                <div class="col-md-3">
+                    <mat-radio-group matInput formControlName="isRequired"  >
+                        <mat-radio-button value=true>True</mat-radio-button>
+                        <mat-radio-button value=false [checked]=true>False</mat-radio-button>
+                    </mat-radio-group>  
+                </div>
+                <div class="col-md-6">
+                  <mat-form-field class="full-width">
+                    <input matInput formControlName="elementType" placeholder="Element type">
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="row">
+                  <div class="col-md-6">
+                      <mat-form-field class="full-width">
+                        <input matInput formControlName="validationRule" placeholder="Validation Rule">
+                      </mat-form-field>
+                    </div>
+                    <div class="col-md-3">
+                      <p>Is multi-select allowed</p>
+                    </div>
+                    <div class="col-md-3">
+                        <mat-radio-group matInput formControlName="isMultiSelectAllowed"  >
+                            <mat-radio-button value=true>True</mat-radio-button>
+                            <mat-radio-button value=false [checked]=true>False</mat-radio-button>
+                        </mat-radio-group> 
+                    </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <p><strong>Options</strong></p>
+                </div>
+              </div>
+              <form formGroupName="options">
+                <div class="row">
+                    <div class="col-md-6">
+                        <mat-form-field class="full-width">
+                          <input matInput formControlName="value" placeholder="Value">
+                        </mat-form-field>
+                    </div>
+                    <div class="col-md-6">
+                        <mat-form-field class="full-width">
+                          <input matInput formControlName="label" placeholder="Label">
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <mat-form-field class="full-width">
+                          <input matInput formControlName="image" placeholder="Image">
+                        </mat-form-field>
+                    </div>
+                    <div class="col-md-6">
+                        <mat-form-field class="full-width">
+                          <input matInput formControlName="image_alt_text" placeholder="Image alter Text">
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-3">
+                    <p>Is image available</p>
+                  </div>
+                    <div class="col-md-3">
+                        <mat-radio-group matInput formControlName="isImageAvailable"  >
+                            <mat-radio-button value=true>True</mat-radio-button>
+                            <mat-radio-button value=false [checked]=true>False</mat-radio-button>
+                        </mat-radio-group> 
+                    </div>
+                    <div class="col-md-3">
+                      <p>Is option main option</p>
+                    </div>
+                    <div class="col-md-3">
+                        <mat-radio-group matInput formControlName="isOptionMainOption"  >
+                            <mat-radio-button value=true>True</mat-radio-button>
+                            <mat-radio-button value=false [checked]=true>False</mat-radio-button>
+                        </mat-radio-group> 
+                    </div>
+                </div>
+              </form>
+
+              <div class="row">
+                  <div class="col-md-6">
+                      <mat-form-field class="full-width">
+                        <input matInput formControlName="textLabel" placeholder="Text Label">
+                      </mat-form-field>
+                  </div>
+                  <div class="col-md-6">
+                      <mat-form-field class="full-width">
+                        <input matInput formControlName="textElementName" placeholder="Text Element Name">
+                      </mat-form-field>
+                  </div>
+              </div>
+              <div class="row">
+                  <div class="col-md-6">
+                      <mat-form-field class="full-width">
+                        <input matInput formControlName="textPlaceholder" placeholder="Text placeholder">
+                      </mat-form-field>
+                  </div>
+                  <div class="col-md-6">
+                      <mat-form-field class="full-width">
+                        <input matInput formControlName="textIcon" placeholder="Text Icon">
+                      </mat-form-field>
+                  </div>
+              </div>
+              <div class="row">
+                  <div class="col-md-6">
+                      <mat-form-field class="full-width">
+                        <input matInput formControlName="defaultValue" placeholder="Default Value">
+                      </mat-form-field>
+                  </div>
+              </div>
+              <form formGroupName="dateOptions">
+                <div class="row">
+                    <div class="col-md-6">
+                        <mat-form-field class="full-width">
+                          <input matInput formControlName="rule" placeholder="Option rule">
+                        </mat-form-field>
+                    </div>
+                    <div class="col-md-6">
+                    </div>
+                </div>
+              </form>
+            </form>
+            
+      </form>
     </form>
+    <div class="row">
+      <div class="col-md-12">
+          <button type="submit" class="pull-right" mat-raised-button color="primary" (click)="add_elements(myform)">Add Elements</button>                      
+          <button type="submit" class="pull-left" mat-raised-button color="primary" (click)="add_slides(myform)">Add Slides</button>                      
+        <!-- <button type="submit" mat-raised-button color="primary" (click)="adddetails(myform)">Add Details</button> -->
+      </div>
+    </div>
+    <br><br>
+    <div>
+        <button type="button" class="pull-left" mat-raised-button color="warn" (click)="reset_form()">Reset</button>
+        <button type="submit" class="pull-right" mat-raised-button color="primary" (click)="adddetails(myform)">Add Form</button>
+    </div>
+    <br>
   </div>
+  <div class="col-md-1"></div>
 </div>

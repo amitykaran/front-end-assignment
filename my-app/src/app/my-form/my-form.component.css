@@ -1,0 +1,22 @@
+.full-width {
+    width: 95%;
+    display: block;
+    font-size: 16px;
+  }
+.mat-radio-button ~ .mat-radio-button {
+    padding-right: 32px;
+  }
+.margin-class {
+    margin-top: 50px
+}  
+.ctr{
+  text-align: center;
+}
+.pull-left {
+  text-align: left  ;
+}
+.pull-right {
+  text-align: right;
+  
+}
+   
