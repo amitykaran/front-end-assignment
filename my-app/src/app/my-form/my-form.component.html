@@ -9,14 +9,14 @@
     </div>
     <form [formGroup]="myform" class="margin-class">
       <div class="row"> 
-        <div class="col-md-6">
+        <!-- <div class="col-md-6">
             <mat-form-field class="full-width">
                 <input matInput formControlName="code" placeholder="Code">
                 <mat-error *ngIf="myform.controls?.code?.errors?.required">Please enter this value as it is
                   <strong>required.</strong>
                 </mat-error>
               </mat-form-field>
-        </div>
+        </div> -->
         <div class="col-md-6">
             <mat-form-field class="full-width">
                 <input matInput formControlName="title" placeholder="Title">
@@ -26,186 +26,356 @@
               </mat-form-field>
         </div>
       </div>
+      <br>
       <div class="row">
-        <div class="col-md-12"><p><strong>Slides</strong></p></div>
-      </div>
-      <form formGroupName="slides">
-          <div class="row">
-              <div class="col-md-6">
-                  <mat-form-field class="full-width">
-                      <textarea matInput formControlName="questiontext" placeholder="Question Text"></textarea>
-                      <mat-error *ngIf="myform.controls?.questiontext?.errors?.required">Please enter this value as it is
-                        <strong>required.</strong>
-                      </mat-error>
-                  </mat-form-field>
-              </div>
-              <div class="col-md-3">
-                <p>Is Skipping Allowed</p>
-              </div>
-              <div class="col-md-3">
-                  <mat-radio-group matInput formControlName="isSkippingAllowed" placeholder="Is Skipping Allowed" >
-                      <mat-radio-button value=true>True</mat-radio-button>
-                      <mat-radio-button value=false [checked]=true>False</mat-radio-button>
-                  </mat-radio-group>  
-              </div>
-            </div>
-            <br>
+        <!-- <div class="col-md-2">
+            <p><strong>Slides:</strong></p>
+        </div> -->
+        <div class="col-md-12">
+          <br>
             <div class="row">
-              <div class="col-md-3">
-                <p>Auto Skipping Allowed</p>
+                <div class="col-md-12"><p><strong>Slides</strong></p></div>
               </div>
-              <div class="col-md-3">
-                  <mat-radio-group matInput formControlName="isAutoSkipped" placeholder="Auto Skipping Allowed" >
-                      <mat-radio-button value=true>True</mat-radio-button>
-                      <mat-radio-button value=false [checked]=true>False</mat-radio-button>
-                  </mat-radio-group>  
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-12"><p><strong>Elements</strong></p></div>
-            </div>
-            <form formGroupName="elements">
-              <div class="row">
-                <div class="col-md-3">
-                  <p>Is Required</p>
-                </div>
-                <div class="col-md-3">
-                    <mat-radio-group matInput formControlName="isRequired"  >
-                        <mat-radio-button value=true>True</mat-radio-button>
-                        <mat-radio-button value=false [checked]=true>False</mat-radio-button>
-                    </mat-radio-group>  
-                </div>
-                <div class="col-md-6">
-                  <mat-form-field class="full-width">
-                    <input matInput formControlName="elementType" placeholder="Element type">
-                  </mat-form-field>
-                </div>
-              </div>
-              <div class="row">
-                  <div class="col-md-6">
-                      <mat-form-field class="full-width">
-                        <input matInput formControlName="validationRule" placeholder="Validation Rule">
-                      </mat-form-field>
+              <form [formGroup]="slides">
+                  <div class="row">
+                      <div class="col-md-12">
+                          <mat-form-field class="full-width">
+                              <textarea matInput formControlName="questiontext" placeholder="Question Text"></textarea>
+                              <mat-error *ngIf="myform.controls?.questiontext?.errors?.required">Please enter this value as it is
+                                <strong>required.</strong>
+                              </mat-error>
+                          </mat-form-field>
+                      </div>
                     </div>
-                    <div class="col-md-3">
-                      <p>Is multi-select allowed</p>
+                    <br>
+                    <div class="row">
+                            <div class="col-md-4">
+                              <p>Auto Skipping Allowed</p>
+                            </div>
+                            <div class="col-md-2">
+                                <mat-checkbox formControlName="isSkippingAllowed" ></mat-checkbox>
+                            </div>
+                            <div class="col-md-4">
+                                <p>Is Skipping Allowed</p>
+                              </div>
+                              <div class="col-md-2">
+                                  <mat-checkbox formControlName="isSkippingAllowed" ></mat-checkbox>
+                              </div> 
                     </div>
-                    <div class="col-md-3">
-                        <mat-radio-group matInput formControlName="isMultiSelectAllowed"  >
-                            <mat-radio-button value=true>True</mat-radio-button>
-                            <mat-radio-button value=false [checked]=true>False</mat-radio-button>
-                        </mat-radio-group> 
-                    </div>
-              </div>
-              <div class="row">
-                <div class="col-md-12">
-                  <p><strong>Options</strong></p>
-                </div>
-              </div>
-              <form formGroupName="options">
-                <div class="row">
-                    <div class="col-md-6">
-                        <mat-form-field class="full-width">
-                          <input matInput formControlName="value" placeholder="Value">
-                        </mat-form-field>
-                    </div>
-                    <div class="col-md-6">
-                        <mat-form-field class="full-width">
-                          <input matInput formControlName="label" placeholder="Label">
-                        </mat-form-field>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6">
-                        <mat-form-field class="full-width">
-                          <input matInput formControlName="image" placeholder="Image">
-                        </mat-form-field>
-                    </div>
-                    <div class="col-md-6">
-                        <mat-form-field class="full-width">
-                          <input matInput formControlName="image_alt_text" placeholder="Image alter Text">
-                        </mat-form-field>
-                    </div>
-                </div>
-                <div class="row">
-                  <div class="col-md-3">
-                    <p>Is image available</p>
-                  </div>
-                    <div class="col-md-3">
-                        <mat-radio-group matInput formControlName="isImageAvailable"  >
-                            <mat-radio-button value=true>True</mat-radio-button>
-                            <mat-radio-button value=false [checked]=true>False</mat-radio-button>
-                        </mat-radio-group> 
-                    </div>
-                    <div class="col-md-3">
-                      <p>Is option main option</p>
-                    </div>
-                    <div class="col-md-3">
-                        <mat-radio-group matInput formControlName="isOptionMainOption"  >
-                            <mat-radio-button value=true>True</mat-radio-button>
-                            <mat-radio-button value=false [checked]=true>False</mat-radio-button>
-                        </mat-radio-group> 
-                    </div>
-                </div>
-              </form>
+                    
+                      <br><br>
+                    <div class="row">
+                      <div class="col-md-2">
+                          <p><strong>Elements:</strong></p>
+                      </div>
+                      <div class="col-md-10">
+                        <br><br>
+                          <div class="row">
+                              <!-- <div class="col-md-12 ctr"><p><strong>Elements</strong></p></div> -->
+                            </div>
+                            <form [formGroup]="elements">
+                              <div class="row">
+                                <div class="col-md-4">
+                                  <p>Is Required</p>
+                                </div>
+                                <div class="col-md-2">
+                                    <mat-checkbox formControlName="isRequired" ></mat-checkbox>
+                                </div>
+                                <div class="col-md-4">
+                                    <p>Is multi-select allowed</p>
+                                  </div>
+                                  <div class="col-md-2">
+                                  <mat-checkbox formControlName="isMultiSelectAllowed" ></mat-checkbox>
+                                  </div>
+                              </div>
+                              <div class="row">
+                                  <div class="col-md-6">
+                                      <mat-form-field class="full-width">
+                                        <input matInput formControlName="elementType" placeholder="Element type">
+                                      </mat-form-field>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <mat-form-field class="full-width">
+                                          <input matInput formControlName="validationRule" placeholder="Validation Rule">
+                                        </mat-form-field>
+                                      </div>
+                              </div>
+                              <div class="row">
+                                <div class="col-md-12 ctr">
+                                  
+                                </div>
+                              </div>
+                              <br>
+                              <div class="row">
+                                <div class="col-md-2">
+                                    <p><strong>Options:</strong></p>
+                                </div>
+                                <div class="col-md-10">
+                                    <form formGroupName="options">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <mat-form-field class="full-width">
+                                                  <input matInput formControlName="value" placeholder="Value">
+                                                </mat-form-field>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <mat-form-field class="full-width">
+                                                  <input matInput formControlName="label" placeholder="Label">
+                                                </mat-form-field>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <mat-form-field class="full-width">
+                                                  <input matInput formControlName="image" placeholder="Image">
+                                                </mat-form-field>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <mat-form-field class="full-width">
+                                                  <input matInput formControlName="image_alt_text" placeholder="Image alter Text">
+                                                </mat-form-field>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                          <div class="col-md-4">
+                                            <p>Is image available</p>
+                                          </div>
+                                            <div class="col-md-2">
+                                                <mat-checkbox formControlName="isImageAvailable" ></mat-checkbox>                        
+                                            </div>
+                                            <div class="col-md-4">
+                                              <p>Is option main option</p>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <!-- <mat-radio-group matInput formControlName="isOptionMainOption"  >
+                                                    <mat-radio-button value=true>True</mat-radio-button>
+                                                    <mat-radio-button value=false [checked]=true>False</mat-radio-button>
+                                                </mat-radio-group>  -->
+                                                <mat-checkbox formControlName="isOptionMainOption" ></mat-checkbox>                        
+                                            </div>
+                                        </div>
+                                      </form>
+                                </div>
+                              </div>
+                
+                              <div class="row">
+                                  <div class="col-md-6">
+                                      <mat-form-field class="full-width">
+                                        <input matInput formControlName="textLabel" placeholder="Text Label">
+                                      </mat-form-field>
+                                  </div>
+                                  <div class="col-md-6">
+                                      <mat-form-field class="full-width">
+                                        <input matInput formControlName="textElementName" placeholder="Text Element Name">
+                                      </mat-form-field>
+                                  </div>
+                              </div>
+                              <div class="row">
+                                  <div class="col-md-6">
+                                      <mat-form-field class="full-width">
+                                        <input matInput formControlName="textPlaceholder" placeholder="Text placeholder">
+                                      </mat-form-field>
+                                  </div>
+                                  <div class="col-md-6">
+                                      <mat-form-field class="full-width">
+                                        <input matInput formControlName="textIcon" placeholder="Text Icon">
+                                      </mat-form-field>
+                                  </div>
+                              </div>
+                              <div class="row">
+                                  <div class="col-md-6">
+                                      <mat-form-field class="full-width">
+                                        <input matInput formControlName="defaultValue" placeholder="Default Value">
+                                      </mat-form-field>
+                                  </div>
+                              </div>
+                              <form formGroupName="dateOptions">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <mat-form-field class="full-width">
+                                          <input matInput formControlName="rule" placeholder="Option rule">
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                              </form>
+                            </form>
+                            <div class="row">
+                              <div class="col-md-8">
+                              </div>
+                              <div class="col-md-4">
+                                  <button type="submit" class="pull-right" mat-raised-button color="primary" (click)="add_elements(elements)">Add Elements</button>                      
+                              </div>
+                            </div>
+                            
+                      </div>
+                      <div class="col-md-6">
+                          <div class="row">
+                              
+                          </div>
+                      </div>
+                      <div class="row">
+                          <div class="col-md-12">
+                              <table class="full-width" *ngFor="let data of element_arr; let indx index" class="full-width table table-bordered table-striped table-hover dataTable js-exportable" >
+                            <!-- <table *ngFor="let data of element_arr; let indx index" class="full-width"> -->
+                              <thead>
+                                <th>Field Name</th>
+                                <th>Value</th>
+                                <th>Field Name</th>
+                                <th>Value</th>
+                              </thead>
+                              <tbody>
+                                  <tr>
+                                      <td>
+                                        <strong>Is Required</strong>
+                                      </td>
+                                      <td>{{data.isRequired}}</td>
+                                      <td>
+                                          <strong>Is multi-select allowed</strong>
+                                      </td>
+                                      <td>{{data.isMultiSelectAllowed}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                          <strong>Element Type</strong>
+                                        </td>
+                                        <td>{{data.elementType}}</td>
+                                        <td>
+                                            <strong>Validation rule</strong>
+                                        </td>
+                                        <td>{{data.validationRule}}</td>
+                                      </tr>
+                                      <tr>
+                                          <td>
+                                            <strong>Value</strong>
+                                          </td>
+                                          <td>{{data.options.value}}</td>
+                                          <td>
+                                              <strong>Label</strong>
+                                          </td>
+                                          <td>{{data.options.label}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                              <strong>Image</strong>
+                                            </td>
+                                            <td>{{data.options.image}}</td>
+                                            <td>
+                                                <strong>Image alter text</strong>
+                                            </td>
+                                            <td>{{data.options.image_alt_text}}</td>  
+                                          </tr>
+                                          <tr>
+                                              <td>
+                                                <strong>Is image available</strong>
+                                              </td>
+                                              <td>{{data.options.isImageAvailable}}</td>
+                                              <td>
+                                                  <strong>Is option main option</strong>
+                                              </td>
+                                              <td>{{data.options.isOptionMainOption}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                  <strong>Text label</strong>
+                                                </td>
+                                                <td>{{data.textLabel}}</td>
+                                                <td>
+                                                    <strong>Text element name</strong>
+                                                </td>
+                                                <td>{{data.textElementName}}</td>
+                                              </tr>
+                                              <tr>
+                                                  <td>
+                                                    <strong>Text placeholder</strong>
+                                                  </td>
+                                                  <td>{{data.textPlaceholder}}</td>
+                                                  <td>
+                                                      <strong>Text Icon</strong>
+                                                  </td>
+                                                  <td>{{data.textIcon}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                      <strong>Default Value</strong>
+                                                    </td>
+                                                    <td>{{data.defaultValue}}</td>
+                                                    <td>
+                                                        <strong>Option Rule</strong>
+                                                    </td>
+                                                    <td>{{data.dateOptions.rule}}</td>
+                                                  </tr>
+                                                  <tr>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td>
+                                                      <button type="button" mat-raised-button color="warn" (click)="deleteElement(indx)">Delete</button>
+                                                    </td>
+                                                  </tr>
+                              </tbody>
 
-              <div class="row">
-                  <div class="col-md-6">
-                      <mat-form-field class="full-width">
-                        <input matInput formControlName="textLabel" placeholder="Text Label">
-                      </mat-form-field>
-                  </div>
-                  <div class="col-md-6">
-                      <mat-form-field class="full-width">
-                        <input matInput formControlName="textElementName" placeholder="Text Element Name">
-                      </mat-form-field>
-                  </div>
-              </div>
-              <div class="row">
-                  <div class="col-md-6">
-                      <mat-form-field class="full-width">
-                        <input matInput formControlName="textPlaceholder" placeholder="Text placeholder">
-                      </mat-form-field>
-                  </div>
-                  <div class="col-md-6">
-                      <mat-form-field class="full-width">
-                        <input matInput formControlName="textIcon" placeholder="Text Icon">
-                      </mat-form-field>
-                  </div>
-              </div>
-              <div class="row">
-                  <div class="col-md-6">
-                      <mat-form-field class="full-width">
-                        <input matInput formControlName="defaultValue" placeholder="Default Value">
-                      </mat-form-field>
-                  </div>
-              </div>
-              <form formGroupName="dateOptions">
-                <div class="row">
-                    <div class="col-md-6">
-                        <mat-form-field class="full-width">
-                          <input matInput formControlName="rule" placeholder="Option rule">
-                        </mat-form-field>
+                            </table>
+                          </div>
+                        </div>
                     </div>
-                    <div class="col-md-6">
-                    </div>
-                </div>
+                    <br> 
               </form>
-            </form>
-            
-      </form>
+              <div class="row">
+                <div class="col-md-10">
+                    <button type="submit" class="pull-left" mat-raised-button color="primary" (click)="add_slides(slides, elements)">Add Slides</button>                      
+                </div>
+                <div class="col-md-2">
+                </div>
+              </div>
+          <div class="row">
+            <div class="col-md-12">
+                <table class="full-width" *ngFor="let data of slide_arr; let indx index" class="full-width table table-bordered table-striped table-hover dataTable js-exportable" >
+                <thead>
+                  <th>Field Name</th>
+                  <th>Value</th>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <strong>isAutoSkipped</strong>
+                    </td>
+                    <td>{{data.isAutoSkipped}}</td>
+                  </tr>
+                  <tr>
+                      <td>
+                        <strong>isSkippingAllowed</strong>
+                      </td>
+                      <td>{{data.isSkippingAllowed}}</td>
+                    </tr>
+                    <tr>
+                        <td>
+                          <strong>questiontext</strong>
+                        </td>
+                        <td>{{data.questiontext}}</td>
+                      </tr>
+                   <tr>
+                     <td></td>
+                     <td>
+                        <button type="button" mat-raised-button color="warn" (click)="deleteSlide(indx)">Delete</button>
+                     </td>
+                   </tr>   
+                </tbody>
+                </table>  
+            </div>
+          </div>    
+        </div>
+      </div>
     </form>
     <div class="row">
       <div class="col-md-12">
-          <button type="submit" class="pull-right" mat-raised-button color="primary" (click)="add_elements(myform)">Add Elements</button>                      
-          <button type="submit" class="pull-left" mat-raised-button color="primary" (click)="add_slides(myform)">Add Slides</button>                      
+          <!-- <button type="submit" class="pull-right" mat-raised-button color="primary" (click)="add_elements(myform)">Add Elements</button>                       -->
         <!-- <button type="submit" mat-raised-button color="primary" (click)="adddetails(myform)">Add Details</button> -->
       </div>
     </div>
     <br><br>
     <div>
         <button type="button" class="pull-left" mat-raised-button color="warn" (click)="reset_form()">Reset</button>
-        <button type="submit" class="pull-right" mat-raised-button color="primary" (click)="adddetails(myform)">Add Form</button>
+        <button type="submit" class="pull-right" mat-raised-button color="primary" (click)="adddetails(myform, slides, elements)">Add Form</button>
     </div>
     <br>
   </div>
