@@ -62,16 +62,22 @@ export class MyFormComponent implements OnInit {
   ngOnInit() {
   }
 
+  //Generate the JSON object 
   adddetails(form, slid, elem) {
-    console.log(form.value);
+    //console.log(form.value);
       let form1 = form.value;
       if(form.valid) {
         form1.slides = slid.value;
         form1.slides.elements = elem.value;
         if(this.slide_arr.length != 0) {
           form1.slides = this.slide_arr;
+          this.slide_arr = [];
         }
+        this.form_arr.push(form1);
         console.log(form1);
+        form.reset();
+      } else {
+        console.log('Invalid Form! Please check');
       }
       // form1.slides = this.slide_arr;
       // console.log(form1);
@@ -83,18 +89,26 @@ export class MyFormComponent implements OnInit {
     // }
   }
 
+  // Add data of element block to elements array.
   add_elements(elem) { 
+
     const element = elem.value;
     this.element_arr.push(element);
     console.log( this.element_arr);
+    elem.reset();
   }
+
+  // add slides block data to array and combine element block to slides
   add_slides(slid, elem) {
     let slide = slid.value;
-    slide.elements = elem.value;
-    if(this.element_arr.length != 0) {
-      slide.elements = this.element_arr;
-    }
+    this.element_arr.push(elem.value);
+    slide.elements = this.element_arr;
+    // if(this.element_arr.length != 0) {
+    //   slide.elements = this.element_arr;
+    // }
     this.slide_arr.push(slide);
+    this.element_arr = [];
+    slid.reset();
     console.log( this.slide_arr);
   }
   deleteElement(indx) {
@@ -102,6 +116,14 @@ export class MyFormComponent implements OnInit {
   }
   deleteSlide(indx) {
     this.slide_arr.splice(indx, 1);
+  }
+  deleteElement_fromslide(indx_slide, indx_elem) {
+    this.slide_arr[indx_slide].elements.splice(indx_elem, 1);
+  }
+  reset_form() {
+    this.myform.reset();
+    this.slides.reset();
+    this.elements.reset();
   }
 
 }

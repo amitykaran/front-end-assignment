@@ -1,10 +1,16 @@
+<div class="row header">
+    <div class="col-md-12">
+        <p class="ctr"><strong>Front-End Assignment</strong></p>
+    </div>
+  </div>
 <div class="row">
   <div class="col-md-1"></div>
   <div class="col-md-10 mat-card">
     <div class="row">
       <div class="col-md-1"></div>
       <div class="col-md-10">
-        <p class="ctr"><strong>Front-End Assignment</strong></p>
+        
+        <!-- <p class="ctr"><strong>Front-End Assignment</strong></p> -->
       </div>
     </div>
     <form [formGroup]="myform" class="margin-class">
@@ -26,22 +32,22 @@
               </mat-form-field>
         </div>
       </div>
-      <br>
+      
       <div class="row">
         <!-- <div class="col-md-2">
             <p><strong>Slides:</strong></p>
         </div> -->
         <div class="col-md-12">
-          <br>
+         
             <div class="row">
                 <div class="col-md-12"><p><strong>Slides</strong></p></div>
               </div>
-              <form [formGroup]="slides">
+              <form [formGroup]="slides" class="full-width">
                   <div class="row">
                       <div class="col-md-12">
                           <mat-form-field class="full-width">
                               <textarea matInput formControlName="questiontext" placeholder="Question Text"></textarea>
-                              <mat-error *ngIf="myform.controls?.questiontext?.errors?.required">Please enter this value as it is
+                              <mat-error *ngIf="slides.controls?.questiontext?.errors?.required">Please enter this value as it is
                                 <strong>required.</strong>
                               </mat-error>
                           </mat-form-field>
@@ -63,13 +69,13 @@
                               </div> 
                     </div>
                     
-                      <br><br>
+                      <br>
                     <div class="row">
                       <div class="col-md-2">
                           <p><strong>Elements:</strong></p>
                       </div>
                       <div class="col-md-10">
-                        <br><br>
+                        <br>
                           <div class="row">
                               <!-- <div class="col-md-12 ctr"><p><strong>Elements</strong></p></div> -->
                             </div>
@@ -203,21 +209,142 @@
                               <div class="col-md-8">
                               </div>
                               <div class="col-md-4">
-                                  <button type="submit" class="pull-right" mat-raised-button color="primary" (click)="add_elements(elements)">Add Elements</button>                      
+                                  <button type="submit" class="pull-right" mat-raised-button color="primary" (click)="add_elements(elements)"><i class="fa fa-plus-circle" style="font-size:20px" aria-hidden="true"></i> Add Elements</button>                      
                               </div>
                             </div>
                             
-                      </div>
-                      <div class="col-md-6">
-                          <div class="row">
-                              
-                          </div>
-                      </div>
+                      <br>
                       <div class="row">
                           <div class="col-md-12">
-                              <table class="full-width" *ngFor="let data of element_arr; let indx index" class="full-width table table-bordered table-striped table-hover dataTable js-exportable" >
-                            <!-- <table *ngFor="let data of element_arr; let indx index" class="full-width"> -->
+                              <mat-accordion  *ngFor="let data of element_arr; let indx1 = index;">
+                                  <mat-expansion-panel>
+                                    <mat-expansion-panel-header>
+                                      <mat-panel-title>
+                                        {{indx1+1}}. Elements Data 
+                                      </mat-panel-title>
+                                      <mat-panel-description>
+                                        Click to show element data
+                                      </mat-panel-description>
+                                    </mat-expansion-panel-header>
+                                    <table  class="table table-bordered table-striped table-hover dataTable js-exportable" >
+                                        <!-- <table *ngFor="let data of element_arr; let indx index" class="full-width"> -->
+                                          <thead>
+                                            <th>Sr No.</th>
+                                            <th>Field Name</th>
+                                            <th>Value</th>
+                                            <th>Field Name</th>
+                                            <th>Value</th>
+                                            <th>Field Name</th>
+                                            <th>Value</th>
+                                            <th>Field Name</th>
+                                            <th>Value</th>
+                                          </thead>
+                                          <tbody>
+                                              <tr>
+                                                <td rowspan="7">{{indx1+1}}</td>
+                                                  <td>
+                                                    <strong>Is Required</strong>
+                                                  </td>
+                                                  <td>{{data.isRequired}}</td>
+                                                  <td>
+                                                      <strong>Is multi-select allowed</strong>
+                                                  </td>
+                                                  <td>{{data.isMultiSelectAllowed}}</td>
+                                               
+                                                    <td>
+                                                      <strong>Element Type</strong>
+                                                    </td>
+                                                    <td>{{data.elementType}}</td>
+                                                  
+                                                    <td>
+                                                        <strong>Validation rule</strong>
+                                                    </td>
+                                                    <td>{{data.validationRule}}</td>
+                                                  </tr>
+                                                  <tr>
+                                                      <td>
+                                                        <strong>Value</strong>
+                                                      </td>
+                                                      <td>{{data.options.value}}</td>
+                                                      <td>
+                                                          <strong>Label</strong>
+                                                      </td>
+                                                      <td>{{data.options.label}}</td>
+                                                    
+                                                        <td>
+                                                          <strong>Image</strong>
+                                                        </td>
+                                                        <td>{{data.options.image}}</td>
+                                                        <td>
+                                                            <strong>Image alter text</strong>
+                                                        </td>
+                                                        <td>{{data.options.image_alt_text}}</td>  
+                                                      </tr>
+                                                      <tr>
+                                                          <td>
+                                                            <strong>Is image available</strong>
+                                                          </td>
+                                                          <td>{{data.options.isImageAvailable}}</td>
+                                                        
+                                                          <td>
+                                                              <strong>Is option main option</strong>
+                                                          </td>
+                                                          <td>{{data.options.isOptionMainOption}}</td>
+                                                        
+                                                            <td>
+                                                              <strong>Text label</strong>
+                                                            </td>
+                                                            <td>{{data.textLabel}}</td>
+                                                            <td>
+                                                                <strong>Text element name</strong>
+                                                            </td>
+                                                            <td>{{data.textElementName}}</td>
+                                                          </tr>
+                                                          <tr>
+                                                              <td>
+                                                                <strong>Text placeholder</strong>
+                                                              </td>
+                                                              <td>{{data.textPlaceholder}}</td>
+                                                              <td>
+                                                                  <strong>Text Icon</strong>
+                                                              </td>
+                                                              <td>{{data.textIcon}}</td>
+                                                           
+                                                                <td>
+                                                                  <strong>Default Value</strong>
+                                                                </td>
+                                                                <td>{{data.defaultValue}}</td>
+                                                              
+                                                                <td>
+                                                                    <strong>Option Rule</strong>
+                                                                </td>
+                                                                <td>{{data.dateOptions.rule}}</td>
+                                                              </tr>
+                                                              <tr>
+                                                                <td></td>
+                                                                <td></td>
+                                                                <td></td>
+                                                                <td></td>
+                                                                <td></td>
+                                                                <td></td>
+                                                                <td></td>
+                                                                <td>
+                                                                  <button type="button" mat-raised-button color="warn" (click)="deleteElement(indx1)">Delete element</button>
+                                                                </td>
+                                                              </tr>
+                                          </tbody>
+            
+                                        </table>
+                                  </mat-expansion-panel>
+                                  </mat-accordion>
+                              <!-- <table class="full-width" *ngFor="let data of element_arr; let indx = index;" class="table table-bordered table-striped table-hover dataTable js-exportable" > -->
+                            <!-- <table *ngFor="let data of element_arr; let indx index" class="full-width"> 
                               <thead>
+                                <th>Sr No.</th>
+                                <th>Field Name</th>
+                                <th>Value</th>
+                                <th>Field Name</th>
+                                <th>Value</th>
                                 <th>Field Name</th>
                                 <th>Value</th>
                                 <th>Field Name</th>
@@ -225,6 +352,7 @@
                               </thead>
                               <tbody>
                                   <tr>
+                                    <td rowspan="7">{{indx+1}}</td>
                                       <td>
                                         <strong>Is Required</strong>
                                       </td>
@@ -233,12 +361,12 @@
                                           <strong>Is multi-select allowed</strong>
                                       </td>
                                       <td>{{data.isMultiSelectAllowed}}</td>
-                                    </tr>
-                                    <tr>
+                                   
                                         <td>
                                           <strong>Element Type</strong>
                                         </td>
                                         <td>{{data.elementType}}</td>
+                                      
                                         <td>
                                             <strong>Validation rule</strong>
                                         </td>
@@ -253,8 +381,7 @@
                                               <strong>Label</strong>
                                           </td>
                                           <td>{{data.options.label}}</td>
-                                        </tr>
-                                        <tr>
+                                        
                                             <td>
                                               <strong>Image</strong>
                                             </td>
@@ -269,12 +396,12 @@
                                                 <strong>Is image available</strong>
                                               </td>
                                               <td>{{data.options.isImageAvailable}}</td>
+                                            
                                               <td>
                                                   <strong>Is option main option</strong>
                                               </td>
                                               <td>{{data.options.isOptionMainOption}}</td>
-                                            </tr>
-                                            <tr>
+                                            
                                                 <td>
                                                   <strong>Text label</strong>
                                                 </td>
@@ -293,12 +420,12 @@
                                                       <strong>Text Icon</strong>
                                                   </td>
                                                   <td>{{data.textIcon}}</td>
-                                                </tr>
-                                                <tr>
+                                               
                                                     <td>
                                                       <strong>Default Value</strong>
                                                     </td>
                                                     <td>{{data.defaultValue}}</td>
+                                                  
                                                     <td>
                                                         <strong>Option Rule</strong>
                                                     </td>
@@ -308,55 +435,195 @@
                                                     <td></td>
                                                     <td></td>
                                                     <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
                                                     <td>
-                                                      <button type="button" mat-raised-button color="warn" (click)="deleteElement(indx)">Delete</button>
+                                                      <button type="button" mat-raised-button color="warn" (click)="deleteElement(indx)">Delete Element</button>
                                                     </td>
                                                   </tr>
                               </tbody>
 
-                            </table>
+                            </table> -->
                           </div>
                         </div>
+                      </div>
                     </div>
                     <br> 
               </form>
               <div class="row">
                 <div class="col-md-10">
-                    <button type="submit" class="pull-left" mat-raised-button color="primary" (click)="add_slides(slides, elements)">Add Slides</button>                      
+                    <button type="submit" class="pull-left" mat-raised-button color="primary" (click)="add_slides(slides, elements)"><i class="fa fa-plus-circle" style="font-size:20px" aria-hidden="true"></i> Add Slides</button>                      
                 </div>
                 <div class="col-md-2">
                 </div>
               </div>
+              <br>
           <div class="row">
-            <div class="col-md-12">
-                <table class="full-width" *ngFor="let data of slide_arr; let indx index" class="full-width table table-bordered table-striped table-hover dataTable js-exportable" >
+            <div class="col-md-12 table-responsive">
+                <table class="full-width"matTable *ngFor="let data1 of slide_arr; let indx = index" class="full-width table table-bordered table-striped table-hover dataTable js-exportable" >
                 <thead>
+                  <th>Sr No.</th>
                   <th>Field Name</th>
                   <th>Value</th>
+                  <th>Elements</th>
                 </thead>
                 <tbody>
                   <tr>
+                    <td rowspan="4">{{indx+1}}</td>
                     <td>
                       <strong>isAutoSkipped</strong>
                     </td>
-                    <td>{{data.isAutoSkipped}}</td>
+                    <td>{{data1.isAutoSkipped}}</td>
+                    <td rowspan="4">
+                        <div class="row">
+                          <div class="col-md-12">
+                              <mat-accordion class="block" *ngFor="let data of data1.elements; let indx1 = index;">
+                                  <mat-expansion-panel>
+                                    <mat-expansion-panel-header>
+                                      <mat-panel-title>
+                                        {{indx1+1}}. Elements Data
+                                      </mat-panel-title>
+                                      <mat-panel-description>
+                                        Click to show element data
+                                      </mat-panel-description>
+                                    </mat-expansion-panel-header>
+                                      <div class="table-responsive" style="overflow-x: auto">
+                                          <table  class="table table-bordered table-striped table-hover dataTable js-exportable" >
+                                              <!-- <table *ngFor="let data of element_arr; let indx index" class="full-width"> -->
+                                                <thead>
+                                                  <th>Sr No.</th>
+                                                  <th>Field Name</th>
+                                                  <th>Value</th>
+                                                  <th>Field Name</th>
+                                                  <th>Value</th>
+                                                  <th>Field Name</th>
+                                                  <th>Value</th>
+                                                  <th>Field Name</th>
+                                                  <th>Value</th>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                      <td rowspan="7">{{indx1+1}}</td>
+                                                        <td>
+                                                          <strong>Is Required</strong>
+                                                        </td>
+                                                        <td>{{data.isRequired}}</td>
+                                                        <td>
+                                                            <strong>Is multi-select allowed</strong>
+                                                        </td>
+                                                        <td>{{data.isMultiSelectAllowed}}</td>
+                                                     
+                                                          <td>
+                                                            <strong>Element Type</strong>
+                                                          </td>
+                                                          <td>{{data.elementType}}</td>
+                                                        
+                                                          <td>
+                                                              <strong>Validation rule</strong>
+                                                          </td>
+                                                          <td>{{data.validationRule}}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                              <strong>Value</strong>
+                                                            </td>
+                                                            <td>{{data.options.value}}</td>
+                                                            <td>
+                                                                <strong>Label</strong>
+                                                            </td>
+                                                            <td>{{data.options.label}}</td>
+                                                          
+                                                              <td>
+                                                                <strong>Image</strong>
+                                                              </td>
+                                                              <td>{{data.options.image}}</td>
+                                                              <td>
+                                                                  <strong>Image alter text</strong>
+                                                              </td>
+                                                              <td>{{data.options.image_alt_text}}</td>  
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                  <strong>Is image available</strong>
+                                                                </td>
+                                                                <td>{{data.options.isImageAvailable}}</td>
+                                                              
+                                                                <td>
+                                                                    <strong>Is option main option</strong>
+                                                                </td>
+                                                                <td>{{data.options.isOptionMainOption}}</td>
+                                                              
+                                                                  <td>
+                                                                    <strong>Text label</strong>
+                                                                  </td>
+                                                                  <td>{{data.textLabel}}</td>
+                                                                  <td>
+                                                                      <strong>Text element name</strong>
+                                                                  </td>
+                                                                  <td>{{data.textElementName}}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>
+                                                                      <strong>Text placeholder</strong>
+                                                                    </td>
+                                                                    <td>{{data.textPlaceholder}}</td>
+                                                                    <td>
+                                                                        <strong>Text Icon</strong>
+                                                                    </td>
+                                                                    <td>{{data.textIcon}}</td>
+                                                                 
+                                                                      <td>
+                                                                        <strong>Default Value</strong>
+                                                                      </td>
+                                                                      <td>{{data.defaultValue}}</td>
+                                                                    
+                                                                      <td>
+                                                                          <strong>Option Rule</strong>
+                                                                      </td>
+                                                                      <td>{{data.dateOptions.rule}}</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                      <td></td>
+                                                                      <td></td>
+                                                                      <td></td>
+                                                                      <td></td>
+                                                                      <td></td>
+                                                                      <td></td>
+                                                                      <td></td>
+                                                                      <td>
+                                                                        <button type="button" mat-raised-button color="warn" (click)="deleteElement_fromslide(indx, indx1)">Delete element</button>
+                                                                      </td>
+                                                                    </tr>
+                                                </tbody>
+                  
+                                              </table>
+                                      </div>
+                                    
+                                  </mat-expansion-panel>
+                                  </mat-accordion>
+                          </div>
+                        </div>
+                        
+                    </td>
                   </tr>
                   <tr>
                       <td>
                         <strong>isSkippingAllowed</strong>
                       </td>
-                      <td>{{data.isSkippingAllowed}}</td>
+                      <td>{{data1.isSkippingAllowed}}</td>
                     </tr>
                     <tr>
                         <td>
                           <strong>questiontext</strong>
                         </td>
-                        <td>{{data.questiontext}}</td>
+                        <td>{{data1.questiontext}}</td>
                       </tr>
                    <tr>
                      <td></td>
                      <td>
-                        <button type="button" mat-raised-button color="warn" (click)="deleteSlide(indx)">Delete</button>
+                        <button type="button" mat-raised-button color="warn" (click)="deleteSlide(indx)">Delete Slide</button>
                      </td>
                    </tr>   
                 </tbody>
@@ -375,9 +642,9 @@
     <br><br>
     <div>
         <button type="button" class="pull-left" mat-raised-button color="warn" (click)="reset_form()">Reset</button>
-        <button type="submit" class="pull-right" mat-raised-button color="primary" (click)="adddetails(myform, slides, elements)">Add Form</button>
+        <button type="submit" class="pull-right" mat-raised-button color="primary" (click)="adddetails(myform, slides, elements)">Create JSON</button>
     </div>
-    <br>
+    <br><br>
   </div>
   <div class="col-md-1"></div>
 </div>

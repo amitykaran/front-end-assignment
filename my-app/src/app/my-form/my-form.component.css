@@ -1,15 +1,43 @@
 .full-width {
-    width: 95%;
+    width: 100%;
     display: block;
-    font-size: 16px;
+    font-size: 14px;
   }
 .mat-radio-button ~ .mat-radio-button {
     padding-right: 32px;
   }
 .margin-class {
-    margin-top: 50px
+    margin-top: 90px
 }  
 .ctr{
   text-align: center;
 }
-   
+.block {
+  width: 100%;
+  display: block;
+  box-sizing: border-box;
+}
+.table-responsive {
+  display: block;
+  width: 100%;
+  overflow-x: auto;
+  -ms-overflow-style: -ms-autohiding-scrollbar; 
+}
+.header{
+  width:100%;
+  min-height:70px;
+  position:fixed;
+  font-size: 20px;
+  top:0;
+  flex-wrap: wrap;
+  z-index: 1000;
+  box-sizing: border-box;
+  background-color:rgb(62, 59, 224);
+  color: rgb(255, 255, 255);
+  display:flex;
+}
+*{
+  -webkit-box-sizing:border-box;
+  -moz-box-sizing:border-box;
+  box-sizing:border-box;
+}
