@@ -49,7 +49,7 @@ export class MyFormComponent implements OnInit {
       defaultValue: [null, ],
       dateOptions: this.fb.group({
           rule: [null,],
-          checkbox: [false, ]
+          //checkbox: [false, ]
           })
 });
     // this.slides = fb.group({
@@ -66,19 +66,17 @@ export class MyFormComponent implements OnInit {
   adddetails(form, slid, elem) {
     //console.log(form.value);
       let form1 = form.value;
-      if(form.valid) {
-        form1.slides = slid.value;
-        form1.slides.elements = elem.value;
-        if(this.slide_arr.length != 0) {
-          form1.slides = this.slide_arr;
-          this.slide_arr = [];
-        }
+      
+        form1.slides = this.slide_arr;
+        //form1.slides.elements = elem.value;
+        // if(this.slide_arr.length != 0) {
+        //   form1.slides = this.slide_arr;
+        //   //this.slide_arr = [];
+        // }
         this.form_arr.push(form1);
         console.log(form1);
         form.reset();
-      } else {
-        console.log('Invalid Form! Please check');
-      }
+     
       // form1.slides = this.slide_arr;
       // console.log(form1);
     // form.value.slides = this.slide_arr;
@@ -90,29 +88,29 @@ export class MyFormComponent implements OnInit {
   }
 
   // Add data of element block to elements array.
-  add_elements(elem) { 
+  add_elements(elem, indx ) { 
 
     const element = elem.value;
-    this.element_arr.push(element);
-    console.log( this.element_arr);
+    this.slide_arr[indx].elements.push(element);
+    console.log( this.slide_arr);
     elem.reset();
   }
 
   // add slides block data to array and combine element block to slides
   add_slides(slid, elem) {
     let slide = slid.value;
-    this.element_arr.push(elem.value);
-    slide.elements = this.element_arr;
+    //this.element_arr.push(elem.value);
+    slide.elements = [];
     // if(this.element_arr.length != 0) {
     //   slide.elements = this.element_arr;
     // }
     this.slide_arr.push(slide);
-    this.element_arr = [];
+    //this.element_arr = [];
     slid.reset();
     console.log( this.slide_arr);
   }
-  deleteElement(indx) {
-    this.element_arr.splice(indx, 1);
+  deleteElement(indx, indx1) {
+    this.slide_arr[indx].elements.splice(indx1, 1);
   }
   deleteSlide(indx) {
     this.slide_arr.splice(indx, 1);
@@ -124,6 +122,9 @@ export class MyFormComponent implements OnInit {
     this.myform.reset();
     this.slides.reset();
     this.elements.reset();
+    this.element_arr = [];
+    this.slide_arr = [];
+    this.form_arr = [];
   }
 
 }

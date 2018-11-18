@@ -1,0 +1,410 @@
+<div class="row">
+    <div class="col-md-2">
+        <p><strong>Elements:</strong></p>
+    </div>
+    <div class="col-md-10">
+      <br>
+        <div class="row">
+            <!-- <div class="col-md-12 ctr"><p><strong>Elements</strong></p></div> -->
+          </div>
+          <form [formGroup]="elements">
+            <div class="row">
+              <!-- <div class="col-md-4">
+                <p>Is Required</p>
+              </div> -->
+              <div class="col-md-6">
+                  <mat-checkbox formControlName="isRequired" >Is Required</mat-checkbox>
+              </div>
+              <!-- <div class="col-md-4">
+                  <p>Is multi-select allowed</p>
+                </div> -->
+                <div class="col-md-6">
+                <mat-checkbox formControlName="isMultiSelectAllowed" >Is multi-select allowed</mat-checkbox>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <mat-form-field class="full-width">
+                      <input matInput formControlName="elementType" placeholder="Element type">
+                    </mat-form-field>
+                  </div>
+                  <div class="col-md-6">
+                      <mat-form-field class="full-width">
+                        <input matInput formControlName="validationRule" placeholder="Validation Rule">
+                      </mat-form-field>
+                    </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12 ctr">
+                
+              </div>
+            </div>
+            <br>
+            <div class="row">
+              <div class="col-md-2">
+                  <p><strong>Options:</strong></p>
+              </div>
+              <div class="col-md-10">
+                  <form formGroupName="options">
+                      <div class="row">
+                          <div class="col-md-6">
+                              <mat-form-field class="full-width">
+                                <input matInput formControlName="value" placeholder="Value">
+                              </mat-form-field>
+                          </div>
+                          <div class="col-md-6">
+                              <mat-form-field class="full-width">
+                                <input matInput formControlName="label" placeholder="Label">
+                              </mat-form-field>
+                          </div>
+                      </div>
+                      <div class="row">
+                          <div class="col-md-6">
+                              <mat-form-field class="full-width">
+                                <input matInput formControlName="image" placeholder="Image">
+                              </mat-form-field>
+                          </div>
+                          <div class="col-md-6">
+                              <mat-form-field class="full-width">
+                                <input matInput formControlName="image_alt_text" placeholder="Image alter Text">
+                              </mat-form-field>
+                          </div>
+                      </div>
+                      <div class="row">
+                        <!-- <div class="col-md-4">
+                          <p>Is image available</p>
+                        </div> -->
+                          <div class="col-md-6">
+                              <mat-checkbox formControlName="isImageAvailable" >Is image available</mat-checkbox>                        
+                          </div>
+                          <!-- <div class="col-md-4">
+                            <p>Is option main option</p>
+                          </div> -->
+                          <div class="col-md-6">
+                              <!-- <mat-radio-group matInput formControlName="isOptionMainOption"  >
+                                  <mat-radio-button value=true>True</mat-radio-button>
+                                  <mat-radio-button value=false [checked]=true>False</mat-radio-button>
+                              </mat-radio-group>  -->
+                              <mat-checkbox formControlName="isOptionMainOption" >Is option main option</mat-checkbox>                        
+                          </div>
+                      </div>
+                    </form>
+              </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <mat-form-field class="full-width">
+                      <input matInput formControlName="textLabel" placeholder="Text Label">
+                    </mat-form-field>
+                </div>
+                <div class="col-md-6">
+                    <mat-form-field class="full-width">
+                      <input matInput formControlName="textElementName" placeholder="Text Element Name">
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <mat-form-field class="full-width">
+                      <input matInput formControlName="textPlaceholder" placeholder="Text placeholder">
+                    </mat-form-field>
+                </div>
+                <div class="col-md-6">
+                    <mat-form-field class="full-width">
+                      <input matInput formControlName="textIcon" placeholder="Text Icon">
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <mat-form-field class="full-width">
+                      <input matInput formControlName="defaultValue" placeholder="Default Value">
+                    </mat-form-field>
+                </div>
+            </div>
+            <form formGroupName="dateOptions">
+              <div class="row">
+                  <div class="col-md-6">
+                      <mat-form-field class="full-width">
+                        <input matInput formControlName="rule" placeholder="Option rule">
+                      </mat-form-field>
+                  </div>
+              </div>
+            </form>
+          </form>
+          <div class="row">
+            <div class="col-md-8">
+            </div>
+            <div class="col-md-4">
+                <button type="submit" class="pull-right" mat-raised-button color="primary" (click)="add_elements(elements)"><i class="fa fa-plus-circle" style="font-size:20px" aria-hidden="true"></i> Create Elements</button>                      
+            </div>
+          </div>
+          
+    <br>
+    <div class="row">
+        <div class="col-md-12">
+            <mat-accordion  *ngFor="let data of element_arr; let indx1 = index;">
+                <mat-expansion-panel>
+                  <mat-expansion-panel-header>
+                    <mat-panel-title>
+                      {{indx1+1}}. Elements Data 
+                    </mat-panel-title>
+                    <mat-panel-description>
+                      Click to show element data
+                    </mat-panel-description>
+                  </mat-expansion-panel-header>
+                  <div class="table-responsive">
+                      <table  class="table table-bordered table-striped table-hover dataTable js-exportable" >
+                          <!-- <table *ngFor="let data of element_arr; let indx index" class="full-width"> -->
+                            <thead>
+                              <th>Sr No.</th>
+                              <th>Field Name</th>
+                              <th>Value</th>
+                              <th>Field Name</th>
+                              <th>Value</th>
+                              <th>Field Name</th>
+                              <th>Value</th>
+                              <th>Field Name</th>
+                              <th>Value</th>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                  <td rowspan="7">{{indx1+1}}</td>
+                                    <td>
+                                      <strong>Is Required</strong>
+                                    </td>
+                                    <td>{{data.isRequired}}</td>
+                                    <td>
+                                        <strong>Is multi-select allowed</strong>
+                                    </td>
+                                    <td>{{data.isMultiSelectAllowed}}</td>
+                                 
+                                      <td>
+                                        <strong>Element Type</strong>
+                                      </td>
+                                      <td>{{data.elementType}}</td>
+                                    
+                                      <td>
+                                          <strong>Validation rule</strong>
+                                      </td>
+                                      <td>{{data.validationRule}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                          <strong>Value</strong>
+                                        </td>
+                                        <td>{{data.options.value}}</td>
+                                        <td>
+                                            <strong>Label</strong>
+                                        </td>
+                                        <td>{{data.options.label}}</td>
+                                      
+                                          <td>
+                                            <strong>Image</strong>
+                                          </td>
+                                          <td>{{data.options.image}}</td>
+                                          <td>
+                                              <strong>Image alter text</strong>
+                                          </td>
+                                          <td>{{data.options.image_alt_text}}</td>  
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                              <strong>Is image available</strong>
+                                            </td>
+                                            <td>{{data.options.isImageAvailable}}</td>
+                                          
+                                            <td>
+                                                <strong>Is option main option</strong>
+                                            </td>
+                                            <td>{{data.options.isOptionMainOption}}</td>
+                                          
+                                              <td>
+                                                <strong>Text label</strong>
+                                              </td>
+                                              <td>{{data.textLabel}}</td>
+                                              <td>
+                                                  <strong>Text element name</strong>
+                                              </td>
+                                              <td>{{data.textElementName}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                  <strong>Text placeholder</strong>
+                                                </td>
+                                                <td>{{data.textPlaceholder}}</td>
+                                                <td>
+                                                    <strong>Text Icon</strong>
+                                                </td>
+                                                <td>{{data.textIcon}}</td>
+                                             
+                                                  <td>
+                                                    <strong>Default Value</strong>
+                                                  </td>
+                                                  <td>{{data.defaultValue}}</td>
+                                                
+                                                  <td>
+                                                      <strong>Option Rule</strong>
+                                                  </td>
+                                                  <td>{{data.dateOptions.rule}}</td>
+                                                </tr>
+                                                <tr>
+                                                  <td></td>
+                                                  <td></td>
+                                                  <td></td>
+                                                  <td></td>
+                                                  <td></td>
+                                                  <td></td>
+                                                  <td></td>
+                                                  <td>
+                                                    <button type="button" mat-raised-button color="warn" (click)="deleteElement(indx1)">Delete element</button>
+                                                  </td>
+                                                </tr>
+                            </tbody>
+
+                          </table>
+                  </div>
+                </mat-expansion-panel>
+                </mat-accordion>
+            
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+  <div class="row">
+    <div class="col-md-12">
+        <mat-accordion class="block" *ngFor="let data of data1.elements; let indx1 = index;">
+            <mat-expansion-panel>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  {{indx1+1}}. Elements Data
+                </mat-panel-title>
+                <mat-panel-description>
+                  Click to show element data
+                </mat-panel-description>
+              </mat-expansion-panel-header>
+                <div class="table-responsive" style="overflow-x: auto">
+                    <table  class="table table-bordered table-striped table-hover dataTable js-exportable" >
+                        <!-- <table *ngFor="let data of element_arr; let indx index" class="full-width"> -->
+                          <thead>
+                            <th>Sr No.</th>
+                            <th>Field Name</th>
+                            <th>Value</th>
+                            <th>Field Name</th>
+                            <th>Value</th>
+                            <th>Field Name</th>
+                            <th>Value</th>
+                            <th>Field Name</th>
+                            <th>Value</th>
+                          </thead>
+                          <tbody>
+                              <tr>
+                                <td rowspan="7">{{indx1+1}}</td>
+                                  <td>
+                                    <strong>Is Required</strong>
+                                  </td>
+                                  <td>{{data.isRequired}}</td>
+                                  <td>
+                                      <strong>Is multi-select allowed</strong>
+                                  </td>
+                                  <td>{{data.isMultiSelectAllowed}}</td>
+                               
+                                    <td>
+                                      <strong>Element Type</strong>
+                                    </td>
+                                    <td>{{data.elementType}}</td>
+                                  
+                                    <td>
+                                        <strong>Validation rule</strong>
+                                    </td>
+                                    <td>{{data.validationRule}}</td>
+                                  </tr>
+                                  <tr>
+                                      <td>
+                                        <strong>Value</strong>
+                                      </td>
+                                      <td>{{data.options.value}}</td>
+                                      <td>
+                                          <strong>Label</strong>
+                                      </td>
+                                      <td>{{data.options.label}}</td>
+                                    
+                                        <td>
+                                          <strong>Image</strong>
+                                        </td>
+                                        <td>{{data.options.image}}</td>
+                                        <td>
+                                            <strong>Image alter text</strong>
+                                        </td>
+                                        <td>{{data.options.image_alt_text}}</td>  
+                                      </tr>
+                                      <tr>
+                                          <td>
+                                            <strong>Is image available</strong>
+                                          </td>
+                                          <td>{{data.options.isImageAvailable}}</td>
+                                        
+                                          <td>
+                                              <strong>Is option main option</strong>
+                                          </td>
+                                          <td>{{data.options.isOptionMainOption}}</td>
+                                        
+                                            <td>
+                                              <strong>Text label</strong>
+                                            </td>
+                                            <td>{{data.textLabel}}</td>
+                                            <td>
+                                                <strong>Text element name</strong>
+                                            </td>
+                                            <td>{{data.textElementName}}</td>
+                                          </tr>
+                                          <tr>
+                                              <td>
+                                                <strong>Text placeholder</strong>
+                                              </td>
+                                              <td>{{data.textPlaceholder}}</td>
+                                              <td>
+                                                  <strong>Text Icon</strong>
+                                              </td>
+                                              <td>{{data.textIcon}}</td>
+                                           
+                                                <td>
+                                                  <strong>Default Value</strong>
+                                                </td>
+                                                <td>{{data.defaultValue}}</td>
+                                              
+                                                <td>
+                                                    <strong>Option Rule</strong>
+                                                </td>
+                                                <td>{{data.dateOptions.rule}}</td>
+                                              </tr>
+                                              <tr>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td>
+                                                  <button type="button" mat-raised-button color="warn" (click)="deleteElement_fromslide(indx, indx1)">Delete element</button>
+                                                </td>
+                                              </tr>
+                          </tbody>
+
+                        </table>
+                </div>
+              
+            </mat-expansion-panel>
+            </mat-accordion>
+    </div>
+  </div>
